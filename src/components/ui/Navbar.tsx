@@ -1,6 +1,6 @@
-import React from 'react';
-import { Spacer, Text, useTheme } from '@nextui-org/react';
+import { Spacer, Text, useTheme, Link } from '@nextui-org/react';
 import Image from 'next/image';
+import NextLink from 'next/link';
 
 export const Navbar = () => {
   const { theme } = useTheme();
@@ -16,7 +16,7 @@ export const Navbar = () => {
         alignItems: 'center',
         justifyContent: 'start',
         padding: '0x 20px',
-        backgroundColor: theme?.colors.gray900.value,
+        backgroundColor: '#16181A',
       }}
     >
       <Image
@@ -26,12 +26,24 @@ export const Navbar = () => {
         height={70}
       />
 
-      <Text color="white" h2>
-        {' '}
-        POKÉMON{' '}
-      </Text>
+      <NextLink href="/" passHref>
+        <Link>
+          <Text color="white" h2>
+            {' '}
+            POKÉMON{' '}
+          </Text>
+        </Link>
+      </NextLink>
+
       <Spacer css={{ flex: 1 }} />
-      <Text color="white"> Favoritos </Text>
+
+      <NextLink href="/favorites" passHref>
+        <Link css={{ marginRight: '10px' }}>
+          <Text color="white" h2>
+            Favoritos
+          </Text>
+        </Link>
+      </NextLink>
     </div>
   );
 };
